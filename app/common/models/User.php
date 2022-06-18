@@ -72,7 +72,7 @@ class User extends ActiveRecord implements IdentityInterface
      */
     public static function findIdentityByAccessToken($token, $type = null)
     {
-        throw new NotSupportedException('"findIdentityByAccessToken" is not implemented.');
+        return static::findOne(['access_token' => $token]);
     }
 
     /**
@@ -84,6 +84,17 @@ class User extends ActiveRecord implements IdentityInterface
     public static function findByUsername($username)
     {
         return static::findOne(['username' => $username, 'status' => self::STATUS_ACTIVE]);
+    }
+
+    /**
+     * Finds user by phone
+     *
+     * @param string $phone
+     * @return static|null
+     */
+    public static function findByPhone($phone)
+    {
+        return static::findOne(['username' => $phone, 'status' => self::STATUS_ACTIVE]);
     }
 
     /**
@@ -110,9 +121,24 @@ class User extends ActiveRecord implements IdentityInterface
      * @param string $token verify email token
      * @return static|null
      */
-    public static function findByVerificationToken($token) {
+    public static function findByVerificationToken($token)
+    {
         return static::findOne([
             'verification_token' => $token,
+            'status' => self::STATUS_INACTIVE
+        ]);
+    }
+
+    /**
+     * Finds user by verification phone code
+     *
+     * @param string $code 
+     * @return static|null
+     */
+    public static function findByAuthCode($code)
+    {
+        return static::findOne([
+            'auth_code' => $code,
             'status' => self::STATUS_INACTIVE
         ]);
     }
@@ -156,6 +182,14 @@ class User extends ActiveRecord implements IdentityInterface
     public function validateAuthKey($authKey)
     {
         return $this->getAuthKey() === $authKey;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function validateAuthCode($authCode)
+    {
+        return $this->auth_code === $authCode;
     }
 
     /**
@@ -204,11 +238,18 @@ class User extends ActiveRecord implements IdentityInterface
     }
 
     /**
+     * Generates new token for email verification
+     */
+    public function generatePhoneVerificationToken()
+    {
+        $this->auth_code = rand(1000, 9999);
+    }
+
+    /**
      * Removes password reset token
      */
     public function removePasswordResetToken()
     {
         $this->password_reset_token = null;
     }
-    
 }
