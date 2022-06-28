@@ -26,10 +26,10 @@ return [
     'components' => [
         'request' => [
             'enableCookieValidation' => false,
-            'enableCsrfValidation' => false,
-            'cookieValidationKey' => 'cdjbuyge327327bey287eyxb237eyxb3e',
+            'enableCsrfValidation' => true,
+            //'cookieValidationKey' => 'cdjbuyge327327bey287eyxb237eyxb3e',
         ],
-        
+
         'response' => [
 
             'format' => 'json',

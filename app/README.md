@@ -25,36 +25,121 @@ DIRECTORY STRUCTURE
 -------------------
 
 ```
-common
-    config/              contains shared configurations
-    mail/                contains view files for e-mails
-    models/              contains model classes used in both backend and frontend
-    tests/               contains tests for common classes    
-console
-    config/              contains console configurations
-    controllers/         contains console controllers (commands)
-    migrations/          contains database migrations
-    models/              contains console-specific model classes
-    runtime/             contains files generated during runtime
-backend
-    assets/              contains application assets such as JavaScript and CSS
-    config/              contains backend configurations
-    controllers/         contains Web controller classes
-    models/              contains backend-specific model classes
-    runtime/             contains files generated during runtime
-    tests/               contains tests for backend application    
-    views/               contains view files for the Web application
-    web/                 contains the entry script and Web resources
-frontend
-    assets/              contains application assets such as JavaScript and CSS
-    config/              contains frontend configurations
-    controllers/         contains Web controller classes
-    models/              contains frontend-specific model classes
-    runtime/             contains files generated during runtime
-    tests/               contains tests for frontend application
-    views/               contains view files for the Web application
-    web/                 contains the entry script and Web resources
-    widgets/             contains frontend widgets
-vendor/                  contains dependent 3rd-party packages
-environments/            contains environment-based overrides
+.
+├── api
+│   ├── config
+│   ├── modules
+│   │   └── v1
+│   │       ├── controllers
+│   │       └── models
+│   │           ├── db
+│   │           └── other
+│   ├── runtime
+│   │   ├── cache
+│   │   ├── debug
+│   │   └── logs
+│   └── web
+│       ├── assets
+│       └── css
+├── backend
+│   ├── assets
+│   ├── config
+│   ├── controllers
+│   ├── models
+│   ├── runtime
+│   │   └── debug
+│   ├── tests
+│   │   ├── _data
+│   │   ├── _output
+│   │   ├── _support
+│   │   ├── functional
+│   │   └── unit
+│   ├── views
+│   │   ├── layouts
+│   │   └── site
+│   └── web
+│       ├── assets
+│       │   ├── 6bd3092b
+│       │   │   ├── css
+│       │   │   └── js
+│       │   ├── 961e3910
+│       │   └── b41e195
+│       └── css
+├── common
+│   ├── config
+│   ├── fixtures
+│   ├── mail
+│   │   └── layouts
+│   ├── models
+│   ├── tests
+│   │   ├── _data
+│   │   ├── _output
+│   │   ├── _support
+│   │   └── unit
+│   │       └── models
+│   └── widgets
+├── console
+│   ├── config
+│   ├── controllers
+│   ├── migrations
+│   ├── models
+│   └── runtime
+│       ├── cache
+│       └── logs
+├── environments
+│   ├── dev
+│   │   ├── backend
+│   │   │   ├── config
+│   │   │   └── web
+│   │   ├── common
+│   │   │   └── config
+│   │   ├── console
+│   │   │   └── config
+│   │   └── frontend
+│   │       ├── config
+│   │       └── web
+│   └── prod
+│       ├── backend
+│       │   ├── config
+│       │   └── web
+│       ├── common
+│       │   └── config
+│       ├── console
+│       │   └── config
+│       └── frontend
+│           ├── config
+│           └── web
+├── frontend
+│   ├── assets
+│   ├── config
+│   ├── controllers
+│   ├── models
+│   ├── runtime
+│   │   ├── cache
+│   │   ├── debug
+│   │   └── logs
+│   ├── tests
+│   │   ├── _data
+│   │   ├── _output
+│   │   ├── _support
+│   │   ├── acceptance
+│   │   ├── functional
+│   │   └── unit
+│   │       └── models
+│   ├── views
+│   │   ├── layouts
+│   │   └── site
+│   └── web
+│       ├── assets
+│       │   ├── 6bd3092b
+│       │   │   ├── css
+│       │   │   └── js
+│       │   ├── 961e3910
+│       │   └── b41e195
+│       └── css
+├── vagrant
+│   ├── config
+│   ├── nginx
+│   │   └── log
+│   └── provision
 ```
